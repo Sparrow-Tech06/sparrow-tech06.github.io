@@ -1,5 +1,6 @@
 :root {
-  
+   --text: ;
+   --background: ;
 }
 
 /******************************************/
@@ -10,5 +11,6 @@
   user-select: none ;
 }
 body {
-  
+  color: var(--text);
+  background: var(--background);
 }

@@ -3,6 +3,12 @@
    --background: ;
 }
 
+@media (prefers-color-scheme: dark) {
+    :root {
+       --text: ;
+       --background: ;
+    }
+}
 /******************************************/
 * {
   margin: 0 ;

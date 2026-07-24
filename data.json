@@ -1,1 +1,23 @@
-
+[
+  {
+    "img": "images/blog1.jpg",
+    "title": "How to Start Your Digital Journey",
+    "description": "Learn the basic steps to start your digital journey and build useful skills for the future.",
+    "date": "July 24, 2026",
+    "link": "blog-details.html"
+  },
+  {
+    "img": "images/blog2.jpg",
+    "title": "10 Useful Productivity Tips",
+    "description": "Discover simple productivity tips that can help you manage your time and complete your work faster.",
+    "date": "July 22, 2026",
+    "link": "blog-details.html"
+  },
+  {
+    "img": "images/blog3.jpg",
+    "title": "Best Skills to Learn in 2026",
+    "description": "Explore some of the most useful and practical skills that can help you grow your career.",
+    "date": "July 20, 2026",
+    "link": "blog-details.html"
+  }
+]

@@ -1,33 +1,371 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title> </title>
-    
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/home.css">
-  
+    <title>Modern Blog</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f7f8fa;
+            color: #1f2937;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header */
+
+        .navbar {
+            background: #ffffff;
+            border-bottom: 1px solid #eeeeee;
+            height: 64px;
+        }
+
+        .brand {
+            font-size: 21px;
+            font-weight: 700;
+            color: #111827;
+            text-decoration: none;
+        }
+
+        .brand span {
+            color: #f97316;
+        }
+
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: #f7f7f7;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Hero */
+
+        .hero {
+            padding: 55px 15px 35px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            font-weight: 750;
+            margin-bottom: 12px;
+            color: #111827;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: auto;
+            color: #6b7280;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Blog Grid */
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(280px, 1fr)
+            );
+            gap: 25px;
+            padding: 15px 0 60px;
+        }
+
+        /* Blog Card */
+
+        .blog-card {
+            background: #ffffff;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid #eeeeee;
+            transition: 0.25s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Image */
+
+        .blog-image {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Content */
+
+        .blog-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .blog-date {
+            font-size: 13px;
+            color: #f97316;
+            font-weight: 600;
+            margin-bottom: 9px;
+        }
+
+        .blog-title {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.35;
+            color: #111827;
+            margin-bottom: 10px;
+        }
+
+        .blog-description {
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Read More */
+
+        .read-more {
+            margin-top: auto;
+            color: #f97316;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .read-more:hover {
+            color: #ea580c;
+        }
+
+        /* Loading */
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #777;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 576px) {
+
+            .hero {
+                padding-top: 40px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .blog-image {
+                height: 200px;
+            }
+
+        }
+
+    </style>
 </head>
+
 <body>
-      <!-----------Header------->
-    <header>
-        
-    </header>
 
-     <!---------footer----------->
-    <footer>
-        
-    </footer>
 
-  
+<!-- Header -->
+
+<nav class="navbar">
+
+    <div class="container d-flex align-items-center justify-content-between">
+
+        <a href="index.html" class="brand">
+            My<span>Blog</span>
+        </a>
+
+        <button class="nav-icon">
+            <i class="bi bi-search"></i>
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- Hero -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <h1>Latest Articles</h1>
+
+        <p>
+            Explore our latest articles, useful tips,
+            ideas and insights.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- Blog -->
+
+<main class="container">
+
+    <div id="blogContainer" class="blog-grid">
+
+        <div class="loading">
+            Loading articles...
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    const blogContainer =
+        document.getElementById("blogContainer");
+
+
+    // Load JSON Data
+
+    fetch("data.json")
+
+        .then(response => {
+
+            if (!response.ok) {
+                throw new Error("Unable to load data.json");
+            }
+
+            return response.json();
+
+        })
+
+        .then(blogs => {
+
+            blogContainer.innerHTML = "";
+
+
+            blogs.forEach(blog => {
+
+                const card = document.createElement("article");
+
+                card.className = "blog-card";
+
+
+                card.innerHTML = `
+
+                    <img
+                        src="${blog.img}"
+                        alt="${blog.title}"
+                        class="blog-image"
+                        loading="lazy"
+                        onerror="this.src='https://via.placeholder.com/600x400?text=No+Image'"
+                    >
+
+                    <div class="blog-content">
+
+                        <div class="blog-date">
+                            <i class="bi bi-calendar3"></i>
+                            ${blog.date}
+                        </div>
+
+                        <h2 class="blog-title">
+                            ${blog.title}
+                        </h2>
+
+                        <p class="blog-description">
+                            ${blog.description}
+                        </p>
+
+                        <a
+                            href="${blog.link}"
+                            class="read-more"
+                        >
+                            Read More
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                `;
+
+
+                blogContainer.appendChild(card);
+
+            });
+
+        })
+
+        .catch(error => {
+
+            blogContainer.innerHTML = `
+
+                <div class="text-center py-5">
+
+                    <i class="bi bi-exclamation-circle fs-1 text-danger"></i>
+
+                    <h4 class="mt-3">
+                        Something went wrong
+                    </h4>
+
+                    <p class="text-muted">
+                        Unable to load blog articles.
+                    </p>
+
+                </div>
+
+            `;
+
+            console.error(error);
+
+        });
+
+</script>
+
+
 <script src="https://quge5.com/88/tag.min.js" data-zone="263139" async data-cfasync="false"></script>
   
 </body>
 </html>
+
